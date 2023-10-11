@@ -39,4 +39,5 @@ setup(
         'wget',
         'spacy>=2.1.8',
     ],
+    py_modules=[],
 )
