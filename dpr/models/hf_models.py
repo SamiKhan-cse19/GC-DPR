@@ -16,7 +16,7 @@ import torch
 from torch import Tensor as T
 from torch import nn
 from transformers.models.bert.modeling_bert import BertConfig, BertModel
-from transformers.optimization import AdamW
+# from transformers.optimization import AdamW
 from transformers.models.bert.tokenization_bert import BertTokenizer
 from transformers.models.roberta.tokenization_roberta import RobertaTokenizer
 
@@ -85,7 +85,7 @@ def get_optimizer(model: nn.Module, learning_rate: float = 1e-5, adam_eps: float
          'weight_decay': weight_decay},
         {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
-    optimizer = AdamW(optimizer_grouped_parameters, lr=learning_rate, eps=adam_eps)
+    optimizer = torch.optim.AdamW(optimizer_grouped_parameters, lr=learning_rate, eps=adam_eps)
     return optimizer
 
 
